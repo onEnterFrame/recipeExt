@@ -1,0 +1,26 @@
+let session = await ai.languageModel.create({
+  systemPrompt:
+    "You are a magnificent home cook! Look at this content and return a succent and comprehensive recipe.",
+});
+console.log("session:", session);
+// Prompt the model and wait for the whole result to come back.
+let result = await session.prompt(document.body.innerText);
+console.log("result:", result);
+
+let longText = document.body.innerText;
+
+let options = {
+  sharedContext: "This is a blog post about a recipe.",
+  type: "key-points",
+  format: "markdown",
+  length: "medium",
+};
+
+let summarizer = await self.ai.summarizer.create(options);
+
+let summary = await summarizer.summarize(longText, {
+  context:
+    "You are a magnificent home cook! Look at this content and return a succent and comprehensive recipe.",
+});
+
+console.log("summary:", summary);

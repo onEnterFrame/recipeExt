@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipe Extractor</title>
+
+    <style>
+      body {
+        width: 600px;
+        padding: 10px;
+        font-family: Arial, sans-serif;
+      }
+      button {
+        width: 100%;
+        padding: 8px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+      #recipe {
+        margin-top: 10px;
+        white-space: pre-wrap;
+      }
+      .spinner {
+        display: none;
+        width: 24px;
+        height: 24px;
+        margin: 10px auto;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #4caf50;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .spinner.active {
+        display: block;
+      }
+
+      /* Add these styles to the <style> section in popup.html */
+      #recipe p {
+        margin: 2px 0;
+      }
+
+      #recipe ul,
+      #recipe ol {
+        margin: 1px 0;
+        padding-left: 20px;
+      }
+
+      #recipe li {
+        margin: 1px 0;
+      }
+
+      #recipe h2 {
+        margin: 4px 0 8px 0;
+      }
+
+      #recipe ul li:first-child,
+      #recipe ol li:first-child {
+        margin-top: 0;
+      }
+
+      #recipe ul li:last-child,
+      #recipe ol li:last-child {
+        margin-bottom: 0;
+      }
+
+      #recipe p + ul,
+      #recipe p + ol {
+        margin-top: 0;
+      }
+
+      .share-options {
+        display: flex;
+        gap: 10px;
+        margin: 10px 0;
+        display: none;
+      }
+
+      .share-button {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .twitter {
+        background: #1da1f2;
+        color: white;
+      }
+      .facebook {
+        background: #4267b2;
+        color: white;
+      }
+      .print {
+        background: #666;
+        color: white;
+      }
+      .new-tab {
+        background: #4caf50;
+        color: white;
+      }
+
+      .share-icon {
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="extractRecipe">Extract Recipe</button>
+    <div id="spinner" class="spinner"></div>
+    <!-- Replace the shareOptions div in popup.html -->
+    <div id="shareOptions" class="share-options">
+      <button class="share-button twitter" disabled>
+        <img src="icons/share/twitter.png" alt="Twitter" class="share-icon" />
+        Twitter
+      </button>
+      <button class="share-button facebook" disabled>
+        <img src="icons/share/facebook.png" alt="Facebook" class="share-icon" />
+        Facebook
+      </button>
+      <button class="share-button print" disabled>
+        <img
+          src="icons/share/printer-fill.png"
+          alt="Print"
+          class="share-icon"
+        />
+        Print
+      </button>
+      <button class="share-button new-tab" disabled>
+        <img
+          src="icons/share/external-link.png"
+          alt="New Tab"
+          class="share-icon"
+        />
+        New Tab
+      </button>
+    </div>
+
+    <div id="recipe"></div>
+    <script src="libs/marked.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

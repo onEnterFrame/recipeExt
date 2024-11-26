@@ -1,0 +1,17 @@
+{
+  "name": "recipe-extractor-extension",
+  "version": "1.0.0",
+  "description": "Chrome extension to extract recipes using AI",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.14.1"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.260",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.4"
+  }
+}
